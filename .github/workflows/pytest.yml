@@ -1,0 +1,43 @@
+
+name: Library Loan System - Pytest
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'library_fine.py'
+      - 'library_eligibility.py'
+      - 'tests/**'
+      - '.github/workflows/pytest.yml'
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'library_fine.py'
+      - 'library_eligibility.py'
+      - 'tests/**'
+      - '.github/workflows/pytest.yml'
+
+  workflow_dispatch:
+
+jobs:
+  unit-tests:
+    name: Run Python Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install pytest
+        run: python -m pip install pytest
+
+      - name: Execute unit tests
+        run: python -m pytest -v
