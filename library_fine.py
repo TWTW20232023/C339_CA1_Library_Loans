@@ -1,4 +1,3 @@
-# Testing GitHub Actions path filtering
 def calculate_fine(days_overdue):
     """Calculate an overdue fine from the number of overdue days."""
     if type(days_overdue) is not int:
